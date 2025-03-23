@@ -3,7 +3,7 @@ const GameCardSkeleton = () => {
     return (
         <>
             <Card.Root>
-                <Skeleton height='200px' />
+                <Skeleton height="200px" />
 
                 <Card.Body>
                     <SkeletonText />
