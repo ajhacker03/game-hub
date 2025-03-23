@@ -1,12 +1,14 @@
 import useGenres from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
 import { List, Image, Text, HStack } from "@chakra-ui/react";
+import GenreListSkeleton from "./GenreListSkeleton";
 
 const GenreList = () => {
-    const { data: genres } = useGenres();
+    const { data: genres, isLoading } = useGenres();
 
     return (
         <>
+            {isLoading && <GenreListSkeleton />}
             <List.Root variant="plain">
                 {genres.map((genre) => {
                     return (
