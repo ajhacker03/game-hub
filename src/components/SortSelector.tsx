@@ -1,35 +1,48 @@
 import { Button, Menu, Portal } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
-const SortSelector = () => {
+interface Props {
+    onSelectSortOrder: (sortOrder: string) => void;
+    sortOrder: string;
+}
+
+const SortSelector = ({
+    onSelectSortOrder: onSelectSort,
+    sortOrder,
+}: Props) => {
     const sortOrders = [
-        "Relevance",
-        "Date added",
-        "Name",
-        "Release",
-        "Popular",
-        "Average Rating",
+        { value: "", label: "Relevance" },
+        { value: "-added", label: "Date added" },
+        { value: "name", label: "Name" },
+        { value: "-released", label: "Release date" },
+        { value: "-metacritic", label: "Popularity" },
+        { value: "-rating", label: "Average Rating" },
     ];
+
+    const currentSortOrder = sortOrders.find(
+        (order) => order.value === sortOrder
+    );
 
     return (
         <>
             <Menu.Root>
                 <Menu.Trigger asChild marginX="10px">
                     <Button variant="outline" size="sm">
-                        Order by: Relevance
+                        Order by: {currentSortOrder?.label || "Relevance"}
                         <BsChevronDown />
                     </Button>
                 </Menu.Trigger>
                 <Portal>
                     <Menu.Positioner>
                         <Menu.Content>
-                            {sortOrders.map((sortOrder) => (
+                            {sortOrders.map((order) => (
                                 <Menu.Item
+                                    onClick={() => onSelectSort(order.value)}
                                     cursor="pointer"
-                                    key={sortOrder}
-                                    value={sortOrder}
+                                    key={order.value}
+                                    value={order.value}
                                 >
-                                    {sortOrder}
+                                    {order.label}
                                 </Menu.Item>
                             ))}
                         </Menu.Content>
