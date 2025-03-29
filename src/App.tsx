@@ -38,6 +38,8 @@ function App() {
                 base: "1fr",
                 lg: "200px 1fr",
             }}
+            width="90vw"
+            mx="auto"
         >
             <GridItem area="nav">
                 <NavBar
@@ -58,7 +60,7 @@ function App() {
                 </GridItem>
             )}
 
-            <GridItem area="main" marginX="auto">
+            <GridItem area="main">
                 <Box marginY={5}>
                     <GameHeading gameQuery={gameQuery} />
                     <Flex marginY={5}>
