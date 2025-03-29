@@ -19,9 +19,9 @@ const ColorModeSwitch = () => {
                     <Switch.Label />
                 </Switch.Root>
                 {colorMode === "dark" ? (
-                    <Text>Dark Mode</Text>
+                    <Text whiteSpace="nowrap">Dark Mode</Text>
                 ) : (
-                    <Text>Light Mode</Text>
+                    <Text whiteSpace="nowrap">Light Mode</Text>
                 )}
             </HStack>
         </>
