@@ -26,7 +26,7 @@ const SortSelector = ({
     return (
         <>
             <Menu.Root>
-                <Menu.Trigger asChild marginX="10px">
+                <Menu.Trigger asChild>
                     <Button variant="outline" size="sm">
                         Order by: {currentSortOrder?.label || "Relevance"}
                         <BsChevronDown />
