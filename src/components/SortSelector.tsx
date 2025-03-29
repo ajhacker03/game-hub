@@ -1,38 +1,35 @@
-import { Platform } from "@/hooks/useGames";
-import usePlatform from "@/hooks/usePlatform";
 import { Button, Menu, Portal } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
-interface Props {
-    onSelectPlatform: (platform: Platform) => void;
-    selectedPlatform: Platform | null;
-}
-
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
-    const { data: platforms, errors } = usePlatform();
-
-    if (errors) return null;
+const SortSelector = () => {
+    const sortOrders = [
+        "Relevance",
+        "Date added",
+        "Name",
+        "Release",
+        "Popular",
+        "Average Rating",
+    ];
 
     return (
         <>
             <Menu.Root>
                 <Menu.Trigger asChild marginX="10px">
                     <Button variant="outline" size="sm">
-                        {selectedPlatform?.name || "Platforms"}
+                        Order by: Relevance
                         <BsChevronDown />
                     </Button>
                 </Menu.Trigger>
                 <Portal>
                     <Menu.Positioner>
                         <Menu.Content>
-                            {platforms.map((platform) => (
+                            {sortOrders.map((sortOrder) => (
                                 <Menu.Item
-                                    onClick={() => onSelectPlatform(platform)}
                                     cursor="pointer"
-                                    key={platform.id}
-                                    value={platform.slug}
+                                    key={sortOrder}
+                                    value={sortOrder}
                                 >
-                                    {platform.name}
+                                    {sortOrder}
                                 </Menu.Item>
                             ))}
                         </Menu.Content>
@@ -43,4 +40,4 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
     );
 };
 
-export default PlatformSelector;
+export default SortSelector;
