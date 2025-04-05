@@ -9,9 +9,7 @@ interface Props {
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
-    const { data: platforms, errors } = usePlatform();
-
-    if (errors) return null;
+    const { data: platforms } = usePlatform();
 
     return (
         <>
@@ -25,7 +23,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
                 <Portal>
                     <Menu.Positioner>
                         <Menu.Content>
-                            {platforms.map((platform) => (
+                            {platforms?.results.map((platform) => (
                                 <Menu.Item
                                     onClick={() => onSelectPlatform(platform)}
                                     cursor="pointer"

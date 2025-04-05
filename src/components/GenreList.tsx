@@ -19,7 +19,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 </Heading>
                 {isLoading && <GenreListSkeleton />}
                 <List.Root variant="plain">
-                    {genres.map((genre) => (
+                    {genres?.results.map((genre) => (
                         <List.Item key={genre.id} paddingY={2}>
                             <HStack>
                                 <Image
